@@ -438,7 +438,7 @@ function getCommonDirectoryPath(pathes) {
     // console.log(pathes[0].slice(0, i).replace(/[|]/, ''));
   }
   // console.log(result.toString().lastIndexOf('/'));
-  console.log(result);
+  // console.log(result);
 
   if (result) {
     const num = result.lastIndexOf('/');
@@ -474,12 +474,12 @@ function getMatrixProduct(m1, m2) {
     .fill(0)
     .map(() => new Array(m2[0].length)
       .fill(0));
-  console.log(result);
+  // console.log(result);
 
 
-  console.log(result.map((row, i) => row
-    .map((_, j) => m1[i]
-      .reduce((sum, e, k) => sum + (e * m2[k][j]), 0))));
+  // console.log(result.map((row, i) => row
+  //   .map((_, j) => m1[i]
+  //     .reduce((sum, e, k) => sum + (e * m2[k][j]), 0))));
 
   return result
     .map((row, i) => row
@@ -539,18 +539,18 @@ function evaluateTicTacToePosition(position) {
       // console.log(board[i]);
     }
   }
-  console.log(board);
+  // console.log(board);
   board = board.join('-').replace(/,/g, '');
-  console.log(board);
+  // console.log(board);
 
   if (/XXX|X...X...X|X....X....X|X..X..X/.test(board)) {
-    console.log('X!!!!');
-    console.log('-----');
+    // console.log('X!!!!');
+    // console.log('-----');
     return 'X';
   }
   if (/000|0...0...0|0....0....0|0..0..0/.test(board)) {
-    console.log('0!!!!');
-    console.log('-----');
+    // console.log('0!!!!');
+    // console.log('-----');
     return 0;
   } if (/0/.test(board)) {
     // console.log('0!!!!');
