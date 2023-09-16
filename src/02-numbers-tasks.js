@@ -19,8 +19,8 @@
  *   5, 10 => 50
  *   5, 5  => 25
  */
-function getRectangleArea(/* width, height */) {
-  throw new Error('Not implemented');
+function getRectangleArea(width, height) {
+  return +width * +height;
 }
 
 
@@ -35,8 +35,8 @@ function getRectangleArea(/* width, height */) {
  *   3.14 => 19.729201864543903
  *   0    => 0
  */
-function getCircleCircumference(/* radius */) {
-  throw new Error('Not implemented');
+function getCircleCircumference(radius) {
+  return 2 * Math.PI * radius;
 }
 
 /**
@@ -51,10 +51,13 @@ function getCircleCircumference(/* radius */) {
  *  10, 0  => 5
  *  -3, 3  => 0
  */
-function getAverage(/* value1, value2 */) {
-  throw new Error('Not implemented');
+function getAverage(value1, value2) {
+  if ((value1 + value2) === 0) {
+    return 0;
+  } if ((value1 + value2) === Infinity) {
+    return Number.MAX_VALUE;
+  } return ((value1 + value2) / 2).toExponential();
 }
-
 /**
  * Returns a distance between two points by cartesian coordinates.
  *
@@ -70,8 +73,11 @@ function getAverage(/* value1, value2 */) {
  *   (0,0) (1,0)    => 1
  *   (-5,0) (10,-10) => 18.027756377319946
  */
-function getDistanceBetweenPoints(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+function getDistanceBetweenPoints(x1, y1, x2, y2) {
+  const a = x1 - x2;
+  const b = y1 - y2;
+
+  return Math.sqrt(a * a + b * b);
 }
 
 /**
@@ -86,8 +92,11 @@ function getDistanceBetweenPoints(/* x1, y1, x2, y2 */) {
  *   x + 8 = 0       => -8
  *   5*x = 0         => 0
  */
-function getLinearEquationRoot(/* a, b */) {
-  throw new Error('Not implemented');
+function getLinearEquationRoot(a, b) {
+  const result = (-1 * b + Math.sqrt((b ** 2) - (4 * a * 0))) / (2 * a);
+  const result2 = (-1 * b - Math.sqrt((b ** 2) - (4 * a * 0))) / (2 * a);
+
+  return result + result2;
 }
 
 
@@ -109,8 +118,9 @@ function getLinearEquationRoot(/* a, b */) {
  *   (0,1) (0,1)     => 0
  *   (0,1) (1,2)     => 0
  */
-function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+function getAngleBetweenVectors(x1, y1, x2, y2) {
+  const result = +(Math.atan2(y1, x1) - Math.atan2(y2, x2));
+  return Math.abs(result);
 }
 
 /**
@@ -125,8 +135,12 @@ function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
  *     5     => 5
  *     0     => 0
  */
-function getLastDigit(/* value */) {
-  throw new Error('Not implemented');
+function getLastDigit(value) {
+  const str = `${value}`;
+
+  if (str[str.length - 1] === 0) {
+    return 0;
+  } return str[str.length - 1];
 }
 
 
@@ -141,8 +155,8 @@ function getLastDigit(/* value */) {
  *     '37'     => 37
  * '-525.5'     => -525.5
  */
-function parseNumberFromString(/* value */) {
-  throw new Error('Not implemented');
+function parseNumberFromString(value) {
+  return +value;
 }
 
 /**
@@ -158,8 +172,8 @@ function parseNumberFromString(/* value */) {
  *   3,3,3   => 5.196152422706632
  *   1,2,3   => 3.741657386773941
  */
-function getParallelepipedDiagonal(/* a, b, c */) {
-  throw new Error('Not implemented');
+function getParallelepipedDiagonal(a, b, c) {
+  return Math.sqrt(a ** 2 + b ** 2 + c ** 2);
 }
 
 
@@ -180,8 +194,11 @@ function getParallelepipedDiagonal(/* a, b, c */) {
  *   1678, 2  => 1700
  *   1678, 3  => 2000
  */
-function roundToPowerOfTen(/* num, pow */) {
-  throw new Error('Not implemented');
+function roundToPowerOfTen(num, pow) {
+  // let result;
+  if (pow === 0) {
+    return num;
+  } return Math.round(num / (10 ** pow)) * 10 ** pow;
 }
 
 /**
@@ -201,8 +218,15 @@ function roundToPowerOfTen(/* num, pow */) {
  *   16 => false
  *   17 => true
  */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
+function isPrime(n) {
+  if (n > 1) {
+    const sqrtNum = Math.sqrt(n);
+
+    for (let i = 2; i <= sqrtNum; i += 1) {
+      if (n % i === 0) return false;
+    }
+    return true;
+  } return false;
 }
 
 /**
@@ -220,8 +244,10 @@ function isPrime(/* n */) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, def) {
+  if (!Number.isInteger(+value)) {
+    return def;
+  } return +value;
 }
 
 module.exports = {
